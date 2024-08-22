@@ -1,0 +1,6 @@
+[submodule "submodules/diff_gaussian_rasteriation_depth"]
+	path = submodules/diff_gaussian_rasteriation_depth
+	url = https://github.com/ingra14m/depth-diff-gaussian-rasterization.git
+[submodule "submodules/simple_knn"]
+	path = submodules/simple_knn
+	url = https://github.com/camenduru/simple-knn.git
