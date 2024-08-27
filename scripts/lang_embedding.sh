@@ -6,7 +6,7 @@ DEVICENUM=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
 for episode in $(ls $rootpath);do
     echo $episode
     dataset_path=$rootpath/$episode
-    CUDA_VISIBLE_DEVICES=${DEVICE} python generate_feature_point_cloud.py --dataset_path $dataset_path &
+    CUDA_VISIBLE_DEVICES=${DEVICE} python pixelwise_clipfeature.py --dataset_path $dataset_path &
     # ((DEVICE=$DEVICE+1))
     if [[ $DEVICE == 0 ]]; then
         wait
