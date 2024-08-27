@@ -129,7 +129,7 @@ def get_pts_and_normal(depth_path, image_path, normal_path, extrinsic_file, mask
         pose_params = json.load(fp)
     pts = []
     camera2base_list = []
-    for i in range(1,len(depth_list)+1):
+    for i in range(len(depth_list)):
         scene_key = "scene_{}".format(str(i).zfill(2))
         print("scene_key",scene_key)
         param = pose_params[scene_key]['pose']

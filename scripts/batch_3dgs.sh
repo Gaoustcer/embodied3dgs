@@ -6,7 +6,7 @@ root_path=datasets/$task/
 log_path=logs/$task
 for file in $(ls $root_path);
 do
-    if [[ $file == episode_13 ]];then
+    # if [[ $file == episode_13 ]];then
     ((port=$RANDOM))
     # if [[ $DEVICEID == 0 ]];then
         # echo "run"
@@ -21,7 +21,7 @@ do
     # fi
     ((DEVICEID=$DEVICEID+1))
     ((DEVICEID=$DEVICEID%$DEVICENUM))
-    fi
+    # fi
     # for ratio in ${ratios[*]};do
     #     ((port=$port+5000))
     #     CUDA_VISIBLE_DEVICES=$DEVICEID python train_depth.py -s ./real_data/$file -m logs/depth/$file_$ratio --port $port --pcd-path point_cloud_$ratio.pcd &

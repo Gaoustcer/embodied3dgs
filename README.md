@@ -11,3 +11,6 @@ Here we use a geo-reconstruction method similar to 3DGS. Our approach consists w
 In this part, we discuss the details of training data. Our original training data consists with three parts
 1. depth/rgb images are stored in images/depths dir
 2. calibrated camera info(6 dimension vector includes position+rotatiobn)
+3. keyframe end-effector pose(optional, when do validation this is not required)
+## prerequisite to run the code
+Before run the whole pipeline, you need to clone the repo recursive and compile the submodule/diff_gaussian_rasterization and submodule/simple_knn in a machine with CUDA support.
