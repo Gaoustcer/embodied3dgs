@@ -77,7 +77,7 @@ with torch.no_grad():
 
     scores = scores.squeeze().detach().cpu().numpy() * 2
     
-    
+     
     print("score shape",scores.shape,scores.max(),scores.min(),scores.mean())
     plt.hist(scores,bins = 32)
     plt.savefig(os.path.join(os.path.dirname(args.feature_path),"3d_query/feature_{}_score.png".format(args.obj_name)))
@@ -92,7 +92,8 @@ with torch.no_grad():
     pcd = o3d.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(xyz)
     plt.scatter(xyz[:,0],xyz[:,1],s = 0.1)
-    
+    import numpy as np
+    print("mean xyz for object {}".format(args.object),np.mean(xyz,axis = 0))
     plt.savefig(os.path.join(os.path.dirname(args.feature_path),"3d_query/xy_{}_distribution.png".format(args.obj_name)))
     pcd.colors = o3d.utility.Vector3dVector(colors)
     o3d.io.write_point_cloud(os.path.join(os.path.dirname(args.feature_path),"3d_query/feature_{}_bounding_topk.pcd".format(args.obj_name)),pcd)

@@ -1,4 +1,4 @@
-taskname="evaluation"
+taskname="diff_height"
 rootpath="datasets"
 task=$taskname
 # steps=(step_0 step_1 step_2 final_state)
@@ -17,8 +17,12 @@ SwitchDevice(){
     echo "switch device"
 }
 # objects=("pick up the pink doll with two red ears." "pick up the yellow doll with two black ears.")
-objects=("pink doll." "yellow doll.")
-object_names=("pickdoll" "yellowdoll")
+# objects=("pink doll." "yellow doll.")
+# object_names=("pickdoll" "yellowdoll")
+# objects=("upper left shelf" 'right shelf')
+# object_names=("upper_left_shelf" 'right_shelf')
+objects=("Yellow Doll." "Pink Doll.")
+object_names=("yellow_doll" "pink_doll")
 # echo ${objects[1]}
 for i  in $(seq 0 1);do
     # object=${objects[$i]}
