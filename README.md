@@ -14,3 +14,15 @@ In this part, we discuss the details of training data. Our original training dat
 3. keyframe end-effector pose(optional, when do validation this is not required)
 ## prerequisite to run the code
 Before run the whole pipeline, you need to clone the repo recursive and compile the submodule/diff_gaussian_rasterization and submodule/simple_knn in a machine with CUDA support.
+1. clone the repo recursively
+```shell
+git clone https://github.com/Gaoustcer/embodied3dgs.git --recursive
+```
+1. Compile differential gaussian rastrization lib
+```shell
+cd submodules
+cd diff_gaussian_rasterization_depth 
+python setup.py build_ext --inplace
+cd ../..
+```
+Then copy the .so file to replace the lib under diff_gaussian_rasterization_depth. Compile simple_knn in the similar way
