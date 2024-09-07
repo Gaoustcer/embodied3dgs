@@ -2,6 +2,7 @@ from re import T
 from typing import List
 import torch
 import os
+import numpy as np
 import argparse
 import clip
 from torch.nn import functional as F
@@ -14,6 +15,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--object",type = str)
 parser.add_argument("--obj-name",type=str)
 parser.add_argument("--feature-path",type = str)
+parser.add_argument("--top-k",type = int,default=10240)
 # parser.add_argument("--ckpt-path",type = str)
 
 args = parser.parse_args()
@@ -68,12 +70,12 @@ with torch.no_grad():
     print("test_embedding shape",text_embedding.shape)
     print("feature shape",features.shape)
     scores = scores.squeeze()
-    indices = torch.topk(scores,10240).indices
+    indices = torch.topk(scores,args.top_k).indices
     
-    scores = scores[indices]
-    features = features[indices]
+    # scores = scores[indices]
+    # features = features[indices]
     indices = indices.detach().cpu().numpy()
-    xyz = xyz[indices]
+    # xyz = xyz[indices]
 
     scores = scores.squeeze().detach().cpu().numpy() * 2
     
@@ -86,6 +88,7 @@ with torch.no_grad():
     # colors = colors[idx]
     # print("color is",colors.shape)
     colors = cmap(scores)[:,:3]
+    colors[indices] = np.array([1,0,0])
     print(colors.shape)
     # xyz = xyz
     import open3d as o3d

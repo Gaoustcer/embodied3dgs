@@ -355,6 +355,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_path', type=str, required=True)
+    parser.add_argument("--image_name",type = str,default="")
     parser.add_argument('--resolution', type=int, default=-1)
     parser.add_argument('--sam_ckpt_path', type=str, default="ckpts/sam_vit_h_4b8939.pth")
     args = parser.parse_args()
@@ -381,6 +382,8 @@ if __name__ == '__main__':
 
     img_list = []
     WARNED = False
+    if args.image_name != "":
+        data_list = [args.image_name]
     for data_path in data_list:
         image_path = os.path.join(img_folder, data_path)
         image = cv2.imread(image_path)
